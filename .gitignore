@@ -40,3 +40,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+package.json
+package-lock.json
+.angular/cache/17.2.3
+.editorconfig

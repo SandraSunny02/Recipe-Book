@@ -1,0 +1,25 @@
+<!-- // add a paragraph which shows the status of the server (online/offline) -->
+
+<!-- // add a button which says "Display Details" (displayDetails = !displayDetails)
+// add a paragraph with the text "Secret password = tuna" which is only displayed if the button above is clicked
+// toggle the display of the password with each click
+// log all button clicks in an array and output that array below the paragraph (maybe log a timestamp or simply an incrementing number)
+// starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (via ngClass) -->
+
+<div class="container p-2">
+    <div class="row">
+        <!-- <p class="text-{{ serverStatus === 'offline' ? 'danger' : 'success' }}">Server with ID {{ serverId }} is {{ getServerStatus() }}</p> -->
+        <li [ngClass]="getColor()"> Server {{serverName}} with ID {{ serverId }} is {{ serverStatus }}</li>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-warning" (click)="onDisplayDetails()">Display Details </button>
+            <p *ngIf="displayDetails">
+                 Hidden Secret => Secret password = tuna 
+            </p>
+            <ul *ngFor="let click of clicksArray; let id = index">
+                <li [ngClass]="id >= 4 ? 'bg-info' : ''" [ngStyle]="{'color': id >= 4 ? 'white' : ''}">{{ id }} -- {{ click }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
